@@ -1,3 +1,4 @@
+using AutoMapper;
 using CarManagementSystem.Data;
 using CarManagementSystem.Services;
 using Microsoft.AspNetCore.Builder;
@@ -34,6 +35,7 @@ namespace CarManagementSystem
             });
 
             services.AddScoped<IRepositoryManager, RepositoryManager>();
+            services.AddAutoMapper(typeof(Startup));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
