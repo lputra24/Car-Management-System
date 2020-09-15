@@ -41,7 +41,7 @@ namespace CarManagementSystem.Services
 
         public void Save()
         {
-            throw new NotImplementedException();
+            _repositoryContext.SaveChanges();
         }
     }
 }

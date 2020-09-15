@@ -12,7 +12,7 @@ namespace CarManagementSystem.DataTransferObjects
         public MappingProfile(){
             CreateMap<Car,CarDTO>();
             CreateMap<VehicleType, VehicleTypeDTO>();
-            
+            CreateMap<CarForCreationDTO, Car>();
         }
     }
 }

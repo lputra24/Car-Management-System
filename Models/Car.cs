@@ -34,7 +34,7 @@ namespace CarManagementSystem.Models
 
         [Required(ErrorMessage = "Wheels is a required field")]
         [Range(2, 12, ErrorMessage = "Can only be between 2 to 12")]
-        public int Wheels { get; set; }
+        public int Wheels { get;set; }
 
         [Required(ErrorMessage = "Body Type is a required field")]
         [MaxLength(50, ErrorMessage = "You cannot exceed 50 characters for Body Type field")]
