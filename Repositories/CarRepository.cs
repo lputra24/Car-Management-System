@@ -13,7 +13,12 @@ namespace CarManagementSystem.Repositories
     {
         public CarRepository(RepositoryContext context) : base(context) { }
 
-        public IEnumerable<CarForViewDTO> GetAllCar()
+        public void CreateCar(Car car)
+        {
+            Add(car);
+        }
+
+        public IEnumerable GetAllCar()
         {
             return Context.Car.Join(Context.VehicleType,
                 Car => Car.VehicleTypeId, VehicleType => VehicleType.Id, (Car, VehicleType) =>

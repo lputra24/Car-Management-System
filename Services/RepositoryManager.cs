@@ -10,7 +10,7 @@ namespace CarManagementSystem.Services
     public class RepositoryManager : IRepositoryManager
     {
         private RepositoryContext _repositoryContext;
-        private ICarRepository _carRepository;
+        private ICarRepository _vehicleRepository;
         private IVehicleTypeRepository _vehicleTypeRepository;
 
         public RepositoryManager(RepositoryContext context) {
@@ -20,10 +20,10 @@ namespace CarManagementSystem.Services
         public ICarRepository Car {
             get
             {
-                if (_carRepository == null) {
-                    _carRepository = new CarRepository(_repositoryContext);
+                if (_vehicleRepository == null) {
+                    _vehicleRepository = new CarRepository(_repositoryContext);
                 }
-                return _carRepository;
+                return _vehicleRepository;
             }
         }
 

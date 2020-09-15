@@ -10,7 +10,8 @@ namespace CarManagementSystem.Repositories
 {
     public interface ICarRepository : IRepositoryBase<Car>
     {
-        IEnumerable<CarForViewDTO> GetAllCar();
+        IEnumerable GetAllCar();
+        void CreateCar(Car car);
 
 
     }
