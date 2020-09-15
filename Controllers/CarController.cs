@@ -25,21 +25,30 @@ namespace CarManagementSystem.Controllers
         }
 
         [HttpGet]
-        public IEnumerable Get()
+        public async Task<IActionResult> GetAllCar()
         {
 
-            return _repository.Car.GetAllCar();
+            var cars = await _repository.Car.GetAllCarAsync();
+            var carsForView = _mapper.Map<IEnumerable<CarForViewDTO>>(cars);
+            return Ok(carsForView);
 
         }
 
         [HttpPost]
         public IActionResult CreateCar([FromForm] CarForCreationDTO car)
         {
+            if (car == null) {
+                return BadRequest("parameter car is empty");
+            }
+            if (!ModelState.IsValid) {
+                return UnprocessableEntity("Invalid model state for the car input object");
+            }
 
-            var carEntity = _mapper.Map<Car>(car);
-            _repository.Car.Add(carEntity);
-            _repository.Save();
-            return Ok(carEntity);
+            Car carToAdd = _mapper.Map<Car>(car);
+            _repository.Car.Add(carToAdd);
+            _repository.SaveAsync();
+            CarForViewDTO carCreated = _mapper.Map<CarForViewDTO>(carToAdd);
+            return Ok(carCreated);
 
         }
     }

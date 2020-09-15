@@ -12,6 +12,7 @@ namespace CarManagementSystem.DataTransferObjects
         public MappingProfile(){
             CreateMap<Car,CarDTO>();
             CreateMap<VehicleType, VehicleTypeDTO>();
+            CreateMap<Car, CarForViewDTO>().ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.VehicleType.Type));
             CreateMap<CarForCreationDTO, Car>();
         }
     }

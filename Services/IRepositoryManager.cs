@@ -10,6 +10,6 @@ namespace CarManagementSystem.Services
     {
         ICarRepository Car { get; }
         IVehicleTypeRepository VehicleType { get; }
-        void Save();
+        Task SaveAsync();
     }
 }

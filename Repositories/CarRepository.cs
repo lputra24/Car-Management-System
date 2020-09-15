@@ -1,6 +1,7 @@
 ﻿using CarManagementSystem.Data;
 using CarManagementSystem.DataTransferObjects;
 using CarManagementSystem.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,20 +19,16 @@ namespace CarManagementSystem.Repositories
             Add(car);
         }
 
-        public IEnumerable GetAllCar()
+        public async Task<IEnumerable<Car>> GetAllCarAsync()
         {
-            return Context.Car.Join(Context.VehicleType,
-                Car => Car.VehicleTypeId, VehicleType => VehicleType.Id, (Car, VehicleType) =>
-                      new CarForViewDTO {Id = Car.Id,
-                          Type = VehicleType.Type,
-                          Make = Car.Make,
-                          Model = Car.Model,
-                          Engine = Car.Engine,
-                          Doors = Car.Doors,
-                          Wheels = Car.Wheels,
-                          BodyType = Car.BodyType
-                      }).ToList();
+
+            return await Context.Car.Include(b => b.VehicleType).ToListAsync();
+
         }
+
+        
+
+
 
     }
 }

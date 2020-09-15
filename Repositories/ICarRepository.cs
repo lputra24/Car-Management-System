@@ -10,7 +10,7 @@ namespace CarManagementSystem.Repositories
 {
     public interface ICarRepository : IRepositoryBase<Car>
     {
-        IEnumerable GetAllCar();
+        Task<IEnumerable<Car>> GetAllCarAsync();
         void CreateCar(Car car);
 
 
