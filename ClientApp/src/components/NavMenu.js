@@ -1,5 +1,6 @@
 import React from 'react'
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import AddModal from './AddModal.js';
 
 function NavMenu() {
     return (
@@ -17,13 +18,13 @@ function NavMenu() {
 
 
                     <NavDropdown title="Create" id="basic-nav-dropdown">
-                        <NavDropdown.Item href="#action/3.1">Create new car</NavDropdown.Item>
+                        <NavDropdown.Item href="#action/3.1"></NavDropdown.Item>
                         
                     </NavDropdown>
                 </Nav>
                 
             </Navbar>
-
+            <AddModal />
             
 
         </div>

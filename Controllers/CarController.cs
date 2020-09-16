@@ -35,7 +35,7 @@ namespace CarManagementSystem.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateCar([FromForm] CarForCreationDTO car)
+        public IActionResult CreateCar([FromBody] CarForCreationDTO car)
         {
             if (car == null) {
                 return BadRequest("parameter car is empty");
