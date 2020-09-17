@@ -21,7 +21,7 @@ const AddModal = () => {
                 <Modal.Body>
                     <AddModalForm/>
                 </Modal.Body>
-                
+                -
             </Modal>
         </>
     )

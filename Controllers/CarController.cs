@@ -35,7 +35,7 @@ namespace CarManagementSystem.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateCar([FromBody] CarForCreationDTO car)
+        public async Task<IActionResult> CreateCar([FromBody] CarForCreationDTO car)
         {
             if (car == null) {
                 return BadRequest("parameter car is empty");
@@ -46,7 +46,7 @@ namespace CarManagementSystem.Controllers
 
             Car carToAdd = _mapper.Map<Car>(car);
             _repository.Car.Add(carToAdd);
-            _repository.SaveAsync();
+            await _repository.SaveAsync();
             CarForViewDTO carCreated = _mapper.Map<CarForViewDTO>(carToAdd);
             return Ok(carCreated);
 
