@@ -3,23 +3,14 @@ import { Form,Button,Col } from 'react-bootstrap';
 import Api from '../Helper/API.js'
 import { Formik } from 'formik';
 import { validateCarSchema } from '../Helper/FormValidationSchema.js'
+import { VEHICLE} from '../Constant.js'
+
 import '../style/Form.scss';
 
-const AddModalForm = () => {
-    const [show, setShow] = useState(false);
+const CarModalForm = () => {
+ 
 
     const api = new Api();
-
-    const AddCar = (data) => {
-        api
-            .addNewData(data,'/car')
-            .then((response) => console.log(response))
-            .catch((err) => console.log(err));
-    }
-
-
-    
-
 
     return (
 
@@ -29,13 +20,14 @@ const AddModalForm = () => {
                 validationSchema={validateCarSchema}
                 onSubmit={(values, { setSubmitting, resetForm }) => {
                     // When button submits form and form is in the process of submitting, submit button is disabled
+
                     setSubmitting(true);
 
-                    values.VehicleTypeID = 1;
+                    
                     console.log(values)
 
                     api
-                        .addNewData(values, '/car')
+                        .addNewData(values, VEHICLE.car)
                         .then((response) => {
                             console.log(response);
                             resetForm();
@@ -58,17 +50,19 @@ const AddModalForm = () => {
                     handleSubmit,
                     isSubmitting }) => (
                         <Form onSubmit={handleSubmit}>
-                           
+
+                            
+                              
                         <Form.Group controlId="formMake">
                             <Form.Label>Make :</Form.Label>
                             <Form.Control
-                                    type="text"
-                                    name="make"
-                                    placeholder="e.g. Honda"
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    value={values.make}
-                                    className={touched.make && errors.make ? 'error' : null}
+                                type="text"
+                                name="make"
+                                placeholder="e.g. Honda"
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                value={values.make.toLowerCase()}
+                                className={touched.make && errors.make ? 'error' : null}
                                 />
                                 {touched.make && errors.make ? (
                                     <div className="error__message__on">{errors.make}</div>
@@ -80,10 +74,11 @@ const AddModalForm = () => {
                             <Form.Control
                                 type="text"
                                 name="model"
-                                    placeholder="e.g. Civic"
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    className={touched.model && errors.model ? 'error' : null}
+                                placeholder="e.g. Civic"
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                value={values.model.toLowerCase()}
+                                className={touched.model && errors.model ? 'error' : null}
                                 />
                                 {touched.model && errors.model ? (
                                     <div className="error__message__on">{errors.model}</div>
@@ -98,7 +93,8 @@ const AddModalForm = () => {
                                 placeholder="e.g. 2.0T Petrol 8 sp Automatic RWD"
                                 onChange={handleChange}
                                 onBlur={handleBlur}
-                                    className={touched.engine && errors.engine ? 'error' : null}
+                                value={values.engine.toLowerCase()}
+                                className={touched.engine && errors.engine ? 'error' : null}
                                 />
                                 {touched.engine && errors.engine ? (
                                     <div className="error__message__on">{errors.engine}</div>
@@ -115,6 +111,7 @@ const AddModalForm = () => {
                                         placeholder="e.g. 4"
                                         onChange={handleChange}
                                         onBlur={handleBlur}
+                                        value={values.doors}
                                         className={touched.doors && errors.doors ? 'error' : null}
                                     />
                                     {touched.doors && errors.doors ? (
@@ -131,6 +128,7 @@ const AddModalForm = () => {
                                         placeholder="e.g. 4"
                                         onChange={handleChange}
                                         onBlur={handleBlur}
+                                        value={values.wheels}
                                         className={touched.wheels && errors.wheels ? 'error' : null}
                                     />
                                     {touched.wheels && errors.wheels ? (
@@ -150,6 +148,7 @@ const AddModalForm = () => {
                                     placeholder="e.g. sedan"
                                     onChange={handleChange}
                                     onBlur={handleBlur}
+                                    value={values.bodyType}
                                     className={touched.bodyType && errors.bodyType ? 'error' : null}
                                 />
                                 {touched.bodyType && errors.bodyType ? (
@@ -170,4 +169,4 @@ const AddModalForm = () => {
     )
 }
 
-export default AddModalForm;
+export default CarModalForm;

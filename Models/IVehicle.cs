@@ -7,14 +7,14 @@ namespace CarManagementSystem.Models
 {
     public interface IVehicle
     {
-        public int Id { get; set; }
+        int Id { get; set; }
 
-        public VehicleType VehicleType { get; set; }
+        VehicleType VehicleType { get; set; }
 
-        public String Make { get; set; }
+        String Make { get; set; }
 
-        public String Model { get; set; }
+        String Model { get; set; }
 
-        public String BodyType { get; set; }
+        String BodyType { get; set; }
     }
 }

@@ -3,7 +3,7 @@
 export default class Api {
     constructor() {
         this.client = null;
-        this.api_url = 'https://localhost:44383/api';
+        this.api_url = 'https://localhost:44383/api/';
     }
 
     init = () => {

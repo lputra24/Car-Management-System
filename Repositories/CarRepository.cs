@@ -18,6 +18,10 @@ namespace CarManagementSystem.Repositories
         {
             Add(car);
         }
+        public void DeleteCar(Car car)
+        {
+            Remove(car);
+        }
 
         public async Task<IEnumerable<Car>> GetAllCarAsync()
         {

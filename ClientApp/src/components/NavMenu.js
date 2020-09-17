@@ -1,6 +1,6 @@
 import React from 'react'
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
-import AddModal from './AddModal.js';
+
 
 function NavMenu() {
     return (
@@ -13,18 +13,10 @@ function NavMenu() {
                     className="d-inline-block align-top"
                     alt="React Bootstrap logo"
                 /></Navbar.Brand>
-                <Nav className="mr-auto">
-                    <Nav.Link href="#home">Home</Nav.Link>
-
-
-                    <NavDropdown title="Create" id="basic-nav-dropdown">
-                        <NavDropdown.Item href="#action/3.1"></NavDropdown.Item>
-                        
-                    </NavDropdown>
-                </Nav>
+                <h3 style={{ color: "white"}}>VEHICLE MANAGEMENT SYSTEM</h3>
                 
             </Navbar>
-            <AddModal />
+           
             
 
         </div>

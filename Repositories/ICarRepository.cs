@@ -12,7 +12,6 @@ namespace CarManagementSystem.Repositories
     {
         Task<IEnumerable<Car>> GetAllCarAsync();
         void CreateCar(Car car);
-
-
+        void DeleteCar(Car car);
     }
 }

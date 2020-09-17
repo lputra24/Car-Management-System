@@ -7,7 +7,6 @@ namespace CarManagementSystem.DataTransferObjects
 {
     public class CarForCreationDTO
     {
-        public int VehicleTypeId { get; set; }
         public String Make { get; set; }
         public String Model { get; set; }
         public String Engine { get; set; }
