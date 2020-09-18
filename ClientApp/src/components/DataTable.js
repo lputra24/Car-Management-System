@@ -27,9 +27,9 @@ const DataTable = (props) => {
     const handleDelete = id => {
         changeIsUpdating(true);
         return api.deleteData(VEHICLE.car,id)
-            .then(
+            .then(response => {
                 fetchData()
-            )
+            })
             .catch((err) => console.log(err));
     }
 
