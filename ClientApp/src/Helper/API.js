@@ -29,4 +29,8 @@ export default class Api {
     addNewData = (data,path) => {
         return this.init().post(path, data);
     };
+
+    deleteData = (path, id) => {
+        return this.init().delete(path+'/'+id);
+    };
 }

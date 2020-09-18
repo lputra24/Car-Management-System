@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+﻿import React from 'react';
 import { Form,Button,Col } from 'react-bootstrap';
 import Api from '../Helper/API.js'
 import { Formik } from 'formik';
@@ -7,10 +7,18 @@ import { VEHICLE} from '../Constant.js'
 
 import '../style/Form.scss';
 
-const CarModalForm = () => {
+const CarModalForm = (props) => {
  
 
     const api = new Api();
+
+    const fetchData = () => {
+        return api.getData(VEHICLE.car)
+            .then(response => {
+                props.updateTable(response.data);
+            })
+            .catch((err) => console.log(err));
+    }
 
     return (
 
@@ -23,14 +31,12 @@ const CarModalForm = () => {
 
                     setSubmitting(true);
 
-                    
-                    console.log(values)
-
                     api
                         .addNewData(values, VEHICLE.car)
                         .then((response) => {
-                            console.log(response);
+                            
                             resetForm();
+                            fetchData();
                             setSubmitting(false);
                         })
                         .catch((err) => console.log(err));
@@ -157,9 +163,9 @@ const CarModalForm = () => {
                         </Form.Group>
 
 
-                            <Button variant="primary" type='submit' disabled={isSubmitting}>
+                        <Button variant="primary" type='submit' disabled={isSubmitting}>
                             Submit
-            </Button>
+                        </Button>
 
                     </Form>
                     )}

@@ -51,5 +51,16 @@ namespace CarManagementSystem.Controllers
             return Ok(carCreated);
 
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteCar(int id) {
+            var car = await _repository.Car.GetCarByIdAsync(id);
+            if (car==null) {
+                return NotFound("The specified car does not exist, please refresh");
+            }
+            _repository.Car.Remove(car);
+            await _repository.SaveAsync();
+            return NoContent();
+        }
     }
 }

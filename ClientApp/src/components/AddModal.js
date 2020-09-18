@@ -3,7 +3,7 @@ import { Modal, Button } from 'react-bootstrap';
 import CarModalForm from './CarModalForm.js'
 
 
-const AddModal = () => {
+const AddModal = (props) => {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -16,10 +16,10 @@ const AddModal = () => {
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title>ADD NEW {props.curVehicle.toUpperCase()}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <CarModalForm/>
+                    <CarModalForm updateTable={props.updateTable}/>
                 </Modal.Body>
                 -
             </Modal>

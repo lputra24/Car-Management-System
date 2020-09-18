@@ -30,9 +30,9 @@ namespace CarManagementSystem.Repositories
 
         }
 
-        
-
-
-
+        public async Task<Car> GetCarByIdAsync(int id)
+        {
+            return await Context.Car.FindAsync(id);
+        }
     }
 }
